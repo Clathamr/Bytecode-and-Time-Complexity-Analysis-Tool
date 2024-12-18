@@ -1,0 +1,10 @@
+# Create the database
+db.create_all()
+db.session.commit()
+
+# Drop and recreate the database
+db.drop_all()
+db.create_all()
+db.session.commit()
+
+

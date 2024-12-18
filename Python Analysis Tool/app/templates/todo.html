@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="POST" action="" novalidate>
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.item.label }}<br/>{{ form.item(size=30) }}<br/>
+        {% for error in form.item.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </div>
+    <div>
+        {{ form.priority.label }}<br/>{{ form.priority(size=30) }}<br/>
+        {% for error in form.priority.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </div>
+    <div>{{ form.submit() }}</div>
+</form>
+
+  <form method="POST" action="" novalidate>
+    {{ form.hidden_tag() }}
+
+    <ol>
+      <p>Items To Do</p>
+      {% for thing in item | sort(attribute="priority")%}
+      <li>
+        {{ item.thing }}
+
+        <button type="submit" name="Delete" value="{{ item.item_id }}">
+          Done
+        </button>
+      </li>
+
+      {% endfor %}
+    </ol>
+  </buttonForm>
+{% endblock %}
